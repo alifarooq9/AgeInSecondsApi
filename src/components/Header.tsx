@@ -1,10 +1,15 @@
 import { cn } from "@/utils/classNames";
 import Link from "next/link";
-import { FC, useState } from "react";
 import { buttonVariants } from "@/ui/Button";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { getServerAuthSession } from "@/utils/auth";
+import SignOutButton from "./SignOutButton";
 
-const Header: FC = () => {
+const Header = async () => {
+	//current session
+	const session = await getServerAuthSession();
+	console.log(session);
+
 	return (
 		<header className="h-16 z-40 sticky top-0 bg-slate-50 dark:bg-background flex justify-center items-center w-full border-b border-default">
 			<div className="component-style-default max-w-7xl flex justify-between items-center">
@@ -39,26 +44,34 @@ const Header: FC = () => {
 								Documentation
 							</Link>
 						</li>
-						<li>
-							<Link
-								href="/dashboard"
-								className={cn(
-									buttonVariants({ variant: "ghost" })
-								)}
-							>
-								Dashboard
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/login"
-								className={cn(
-									buttonVariants({ className: "ml-3" })
-								)}
-							>
-								Login
-							</Link>
-						</li>
+						{true ? (
+							<>
+								<li>
+									<Link
+										href="/dashboard"
+										className={cn(
+											buttonVariants({ variant: "ghost" })
+										)}
+									>
+										Dashboard
+									</Link>
+								</li>
+								<li className="ml-3">
+									<SignOutButton />
+								</li>
+							</>
+						) : (
+							<li>
+								<Link
+									href="/login"
+									className={cn(
+										buttonVariants({ className: "ml-3" })
+									)}
+								>
+									Login
+								</Link>
+							</li>
+						)}
 					</ul>
 				</nav>
 			</div>

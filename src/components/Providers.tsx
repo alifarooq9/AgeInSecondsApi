@@ -2,6 +2,7 @@
 
 import { FC, ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
+import { SessionProvider } from "next-auth/react";
 
 type ProvidersProps = {
 	children: ReactNode;
@@ -9,9 +10,11 @@ type ProvidersProps = {
 
 const Providers: FC<ProvidersProps> = ({ children }) => {
 	return (
-		<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-			{children}
-		</ThemeProvider>
+		<SessionProvider>
+			<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+				{children}
+			</ThemeProvider>
+		</SessionProvider>
 	);
 };
 
