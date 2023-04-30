@@ -8,7 +8,6 @@ import SignOutButton from "./SignOutButton";
 const Header = async () => {
 	//current session
 	const session = await getServerAuthSession();
-	console.log(session);
 
 	return (
 		<header className="h-16 z-40 sticky top-0 bg-slate-50 dark:bg-background flex justify-center items-center w-full border-b border-default">
@@ -44,7 +43,7 @@ const Header = async () => {
 								Documentation
 							</Link>
 						</li>
-						{true ? (
+						{session ? (
 							<>
 								<li>
 									<Link
