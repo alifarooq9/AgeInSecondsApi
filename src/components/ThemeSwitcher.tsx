@@ -23,7 +23,7 @@ const ThemeSwitcher: FC = () => {
 				<DropdownMenu.Content
 					forceMount
 					align="end"
-					className="bg-slate-50 w-40 space-y-1 dark:bg-background border rounded-xl p-2 border-default radix-state-open:animate-in radix-state-open:fade-in radix-state-open:slide-in-from-top-3 radix-state-closed:animate-out radix-state-closed:fade-out radix-state-closed:slide-out-to-top-3"
+					className="bg-slate-50 w-40 z-50 space-y-1 dark:bg-background border rounded-xl p-2 border-default radix-state-open:animate-in radix-state-open:fade-in radix-state-open:slide-in-from-top-3 radix-state-closed:animate-out radix-state-closed:fade-out radix-state-closed:slide-out-to-top-3"
 				>
 					<DropdownMenu.Item asChild>
 						<Button

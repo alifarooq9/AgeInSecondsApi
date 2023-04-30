@@ -18,8 +18,14 @@ const buttonVariants = cva(
 				ghost: "bg-transparent text-background font-medium dark:text-slate-50 hover:bg-background/5 dark:hover:bg-slate-50/10 transition-colors",
 				secondary:
 					"bg-background/10 text-background font-medium dark:text-slate-50 dark:bg-slate-50/10 transition-colors hover:bg-background/20 dark:hover:bg-slate-50/20",
+				border: "font-semibold border border-default text-background dark:text-slate-50 dark:bg-transparent transition-colors hover:bg-background/5 dark:hover:bg-slate-300/10",
 			},
-			size: { sm: "px-3 py-1.5", md: "px-4 py-2", lg: "px-6 py-3" },
+			size: {
+				sm: "px-3 py-1.5",
+				md: "px-4 py-2",
+				lg: "px-6 py-3",
+				xl: "px-8 py-3.5",
+			},
 		},
 		defaultVariants: {
 			variant: "default",

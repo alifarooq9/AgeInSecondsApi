@@ -6,7 +6,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header: FC = () => {
 	return (
-		<header className="h-16 flex justify-center items-center w-full border-b border-default">
+		<header className="h-16 z-40 sticky top-0 bg-slate-50 dark:bg-background flex justify-center items-center w-full border-b border-default">
 			<div className="component-style-default max-w-7xl flex justify-between items-center">
 				<Link
 					href="/"
@@ -26,7 +26,7 @@ const Header: FC = () => {
 				</Link>
 
 				<nav>
-					<ul className="flex items-center ">
+					<ul className="flex items-center">
 						<ThemeSwitcher />
 
 						<li>
