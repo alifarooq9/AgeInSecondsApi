@@ -1,9 +1,10 @@
 import { cn } from "@/utils/classNames";
 import { cva, VariantProps } from "class-variance-authority";
+import { Loader2 } from "lucide-react";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
 const buttonVariants = cva(
-	"inline-flex items-center focus-default justify-center rounded-lg text-sm  disabled:opacity-50 disabled:pointer-events-none",
+	"inline-flex items-center focus-default justify-center rounded-lg text-sm  disabled:opacity-60 disabled:pointer-events-none",
 	{
 		variants: {
 			variant: {
@@ -24,16 +25,29 @@ const buttonVariants = cva(
 
 export interface ButtonProps
 	extends ButtonHTMLAttributes<HTMLButtonElement>,
-		VariantProps<typeof buttonVariants> {}
+		VariantProps<typeof buttonVariants> {
+	isLoading?: boolean;
+	loadingPlaceholder?: string;
+}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, ...props }, ref) => {
 		return (
 			<button
 				className={cn(buttonVariants({ variant, size, className }))}
+				disabled={props.isLoading}
 				ref={ref}
 				{...props}
-			/>
+			>
+				{props.isLoading && (
+					<Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+				)}
+				<span>
+					{props.loadingPlaceholder && props.isLoading
+						? props.loadingPlaceholder
+						: props.children}
+				</span>
+			</button>
 		);
 	}
 );
