@@ -1,9 +1,10 @@
 import { cn } from "@/utils/classNames";
 import "../styles/globals.css";
-import { Inter } from "next/font/google";
-import Providers from "@/components/providers";
+import Providers from "@/components/Providers";
+import Header from "@/components/Header";
+import { Inter_Tight } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter_Tight({ subsets: ["latin"] });
 
 export const metadata = {
 	title: "Create Next App",
@@ -16,14 +17,17 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className="dark">
+		<html lang="en">
 			<body
 				className={cn(
-					"antialiased text-slate-900 bg-slate-50 dark:text-slate-50 dark:bg-background",
+					" min-h-screen tracking-wider text-background bg-slate-50 dark:bg-background dark:text-slate-50",
 					inter.className
 				)}
 			>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);

@@ -9,9 +9,8 @@ module.exports = {
     extend: {
      colors: {
         'background': '#030711',
-     }
+     },
     },
-    
   },
 
   darkMode: 'class',
