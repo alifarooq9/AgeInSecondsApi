@@ -2,10 +2,11 @@ import { cn } from "@/utils/classNames";
 import Link from "next/link";
 import { FC, useState } from "react";
 import { buttonVariants } from "@/ui/Button";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header: FC = () => {
 	return (
-		<header className="h-16 flex justify-center items-center w-full border-b border-color">
+		<header className="h-16 flex justify-center items-center w-full border-b border-default">
 			<div className="component-style-default max-w-7xl flex justify-between items-center">
 				<Link
 					href="/"
@@ -25,7 +26,9 @@ const Header: FC = () => {
 				</Link>
 
 				<nav>
-					<ul className="flex items-center space-x-3">
+					<ul className="flex items-center ">
+						<ThemeSwitcher />
+
 						<li>
 							<Link
 								href="/docs"
@@ -49,7 +52,9 @@ const Header: FC = () => {
 						<li>
 							<Link
 								href="/login"
-								className={cn(buttonVariants())}
+								className={cn(
+									buttonVariants({ className: "ml-3" })
+								)}
 							>
 								Login
 							</Link>

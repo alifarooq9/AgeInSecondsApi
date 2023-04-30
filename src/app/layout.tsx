@@ -20,7 +20,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={cn(
-					" min-h-screen tracking-wider text-background bg-slate-50 dark:bg-background dark:text-slate-50",
+					"antialiased min-h-screen tracking-wider text-background bg-slate-50 dark:bg-background dark:text-slate-50",
 					inter.className
 				)}
 			>

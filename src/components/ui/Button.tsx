@@ -4,15 +4,15 @@ import { Loader2 } from "lucide-react";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
 const buttonVariants = cva(
-	"inline-flex items-center focus-default justify-center rounded-lg text-sm  disabled:opacity-60 disabled:pointer-events-none",
+	"flex justify-center items-center tracking-wider focus-default rounded-lg text-sm  disabled:opacity-60 disabled:pointer-events-none",
 	{
 		variants: {
 			variant: {
 				default:
 					"bg-background font-semibold text-slate-50 dark:text-background dark:bg-slate-50 hover:opacity-90 transition-opacity",
-				ghost: "bg-transparent text-background dark:text-slate-50 hover:bg-background/10 dark:hover:bg-slate-50/10 transition-colors",
+				ghost: "bg-transparent text-background font-medium dark:text-slate-50 hover:bg-background/5 dark:hover:bg-slate-50/10 transition-colors",
 				secondary:
-					"bg-background/10 text-background dark:text-slate-50 dark:bg-slate-50/10 transition-colors hover:bg-background/20 dark:hover:bg-slate-50/20",
+					"bg-background/10 text-background font-medium dark:text-slate-50 dark:bg-slate-50/10 transition-colors hover:bg-background/20 dark:hover:bg-slate-50/20",
 			},
 			size: { sm: "px-3 py-1.5", md: "px-4 py-2", lg: "px-6 py-3" },
 		},
@@ -42,7 +42,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				{props.isLoading && (
 					<Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
 				)}
-				<span>
+				<span className="flex items-center">
 					{props.loadingPlaceholder && props.isLoading
 						? props.loadingPlaceholder
 						: props.children}
