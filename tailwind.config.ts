@@ -14,5 +14,5 @@ module.exports = {
   },
 
   darkMode: 'class',
-  plugins: [],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography'),  require("tailwindcss-radix")()],
 }

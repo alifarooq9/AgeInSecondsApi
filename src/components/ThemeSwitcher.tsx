@@ -15,14 +15,15 @@ const ThemeSwitcher: FC = () => {
 			<DropdownMenu.Trigger asChild>
 				<Button variant="ghost">
 					<span>Theme</span>
-					<ChevronDown className="w-4 h-4 ml-1" />
+					<ChevronDown className="w-4 h-4 ml-1 radix-state-open:rotate-180 radix-state-closed:rotate-0 transition-transform duration-300 ease-in-out" />
 				</Button>
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Portal>
 				<DropdownMenu.Content
+					forceMount
 					align="end"
-					className="bg-slate-50 w-40 space-y-1 dark:bg-background border rounded-xl p-2 border-default"
+					className="bg-slate-50 w-40 space-y-1 dark:bg-background border rounded-xl p-2 border-default radix-state-open:animate-in radix-state-open:fade-in radix-state-open:slide-in-from-top-3 radix-state-closed:animate-out radix-state-closed:fade-out radix-state-closed:slide-out-to-top-3"
 				>
 					<DropdownMenu.Item asChild>
 						<Button

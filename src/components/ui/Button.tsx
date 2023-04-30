@@ -1,7 +1,12 @@
 import { cn } from "@/utils/classNames";
 import { cva, VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
-import { ButtonHTMLAttributes, forwardRef } from "react";
+import {
+	ButtonHTMLAttributes,
+	cloneElement,
+	forwardRef,
+	Children,
+} from "react";
 
 const buttonVariants = cva(
 	"flex justify-center items-center tracking-wider focus-default rounded-lg text-sm  disabled:opacity-60 disabled:pointer-events-none",
@@ -28,10 +33,13 @@ export interface ButtonProps
 		VariantProps<typeof buttonVariants> {
 	isLoading?: boolean;
 	loadingPlaceholder?: string;
+	["data-state"]?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, ...props }, ref) => {
+		const dataAttrValue = props["data-state"];
+
 		return (
 			<button
 				className={cn(buttonVariants({ variant, size, className }))}
@@ -45,7 +53,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 				<span className="flex items-center">
 					{props.loadingPlaceholder && props.isLoading
 						? props.loadingPlaceholder
-						: props.children}
+						: Children.map(props.children, (child) => {
+								return cloneElement(child as any, {
+									["data-state"]: dataAttrValue,
+								});
+						  })}
 				</span>
 			</button>
 		);
