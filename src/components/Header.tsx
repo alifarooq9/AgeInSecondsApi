@@ -1,7 +1,7 @@
 import { cn } from "@/utils/classNames";
 import Link from "next/link";
 import { FC } from "react";
-import { buttonVariants } from "./ui/Button";
+import { buttonVariants } from "@/ui/Button";
 
 const Header: FC = () => {
 	return (
