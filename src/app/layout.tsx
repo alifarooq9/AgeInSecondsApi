@@ -5,7 +5,13 @@ import { Inter_Tight } from "next/font/google";
 import Header from "@/components/Header";
 import { getServerAuthSession } from "@/utils/auth";
 
-const inter = Inter_Tight({ subsets: ["latin"] });
+const inter = Inter_Tight({
+	subsets: ["latin"],
+	display: "auto",
+	adjustFontFallback: true,
+	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	preload: true,
+});
 
 export const metadata = {
 	title: "Create Next App",

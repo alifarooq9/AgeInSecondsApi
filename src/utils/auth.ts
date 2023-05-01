@@ -41,11 +41,11 @@ export const authOptions: NextAuthOptions = {
 		},
 	},
 	adapter: UpstashRedisAdapter(redis),
-	// pages: {
-	// 	signIn: "/auth",
-	// 	error: "/auth",
-	// 	verifyRequest: "/auth",
-	// },
+	pages: {
+		signIn: "/login",
+		error: "/login",
+		verifyRequest: "/login",
+	},
 	providers: [
 		GoogleProvider({
 			clientId: env.GOOGLE_CLIENT_ID,

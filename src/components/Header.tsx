@@ -4,12 +4,28 @@ import { cn } from "@/utils/classNames";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/ui/Button";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 
 const Header: FC = () => {
 	//current session
 	const { status } = useSession();
+
+	//sign out loading state
+	const [isSigningOut, setIsSigningOut] = useState<boolean>(false);
+
+	//handle sign out
+	const handleSignOut = async () => {
+		setIsSigningOut(true);
+
+		try {
+			await signOut({ callbackUrl: "/" });
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsSigningOut(false);
+		}
+	};
 
 	return (
 		<header className="h-16 z-40 sticky top-0 bg-slate-50 dark:bg-background flex justify-center items-center w-full border-b border-default">
@@ -58,7 +74,10 @@ const Header: FC = () => {
 									</Link>
 								</li>
 								<li className="ml-3">
-									<Button onClick={() => signOut()}>
+									<Button
+										isLoading={isSigningOut}
+										onClick={handleSignOut}
+									>
 										<span>Sign out</span>
 									</Button>
 								</li>

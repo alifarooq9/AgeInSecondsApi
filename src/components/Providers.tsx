@@ -10,9 +10,9 @@ type ProvidersProps = {
 	session: Session | null;
 };
 
-const Providers: FC<ProvidersProps> = ({ children }) => {
+const Providers: FC<ProvidersProps> = ({ children, session }) => {
 	return (
-		<SessionProvider>
+		<SessionProvider session={session}>
 			<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 				{children}
 			</ThemeProvider>
