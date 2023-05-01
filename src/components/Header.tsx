@@ -75,7 +75,8 @@ const Header: FC = () => {
 								</li>
 								<li className="ml-3">
 									<Button
-										isLoading={isSigningOut}
+										isLoading={isSigningOut
+                                        }
 										onClick={handleSignOut}
 									>
 										<span>Sign out</span>
