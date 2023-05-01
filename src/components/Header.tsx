@@ -1,13 +1,15 @@
+"use client";
+
 import { cn } from "@/utils/classNames";
 import Link from "next/link";
-import { buttonVariants } from "@/ui/Button";
+import { Button, buttonVariants } from "@/ui/Button";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { getServerAuthSession } from "@/utils/auth";
-import SignOutButton from "./SignOutButton";
+import { FC } from "react";
+import { signOut, useSession } from "next-auth/react";
 
-const Header = async () => {
+const Header: FC = () => {
 	//current session
-	const session = await getServerAuthSession();
+	const { status } = useSession();
 
 	return (
 		<header className="h-16 z-40 sticky top-0 bg-slate-50 dark:bg-background flex justify-center items-center w-full border-b border-default">
@@ -43,7 +45,7 @@ const Header = async () => {
 								Documentation
 							</Link>
 						</li>
-						{session ? (
+						{status === "authenticated" ? (
 							<>
 								<li>
 									<Link
@@ -56,7 +58,9 @@ const Header = async () => {
 									</Link>
 								</li>
 								<li className="ml-3">
-									<SignOutButton />
+									<Button onClick={() => signOut()}>
+										<span>Sign out</span>
+									</Button>
 								</li>
 							</>
 						) : (
