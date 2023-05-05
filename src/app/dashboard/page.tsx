@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import ApiKey from "@/components/ApiKey";
 import { Key } from "lucide-react";
 import { redis } from "@/utils/db";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 
 const Dashboard = async () => {
 	//session
@@ -25,7 +27,25 @@ const Dashboard = async () => {
 				</h1>
 			</div>
 
-			<ApiKey apiKey={apiKey as string} />
+			<div className="space-y-5">
+				<ApiKey apiKey={apiKey as string} />
+
+				<div className="inline-flex w-full justify-center items-center space-x-4">
+					<label className="whitespace-nowrap" htmlFor="api-key">
+						Your Api Secret:
+					</label>
+					<Input
+						type="text"
+						placeholder="Please generate your api key..."
+						id="api-key"
+						value={session.user.id}
+					/>
+
+					<Button type="button" size="md" variant="secondary">
+						<span>Copy</span>
+					</Button>
+				</div>
+			</div>
 		</main>
 	);
 };
