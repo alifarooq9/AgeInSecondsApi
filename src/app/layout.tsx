@@ -7,7 +7,7 @@ import { getServerAuthSession } from "@/utils/auth";
 
 const inter = Inter_Tight({
 	subsets: ["latin"],
-	display: "auto",
+	display: "swap",
 	adjustFontFallback: true,
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 	preload: true,

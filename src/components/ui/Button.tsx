@@ -6,7 +6,6 @@ import {
 	cloneElement,
 	forwardRef,
 	Children,
-	FC,
 } from "react";
 
 const buttonVariants = cva(
