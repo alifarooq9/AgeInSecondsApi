@@ -2,6 +2,7 @@ import { getServerAuthSession } from "@/utils/auth";
 import { redirect } from "next/navigation";
 import ApiKey from "@/components/ApiKey";
 import { Key } from "lucide-react";
+import { redis } from "@/utils/db";
 
 const Dashboard = async () => {
 	//session
@@ -12,6 +13,9 @@ const Dashboard = async () => {
 		redirect("/login");
 	}
 
+	//get api key
+	const apiKey = await redis.get(`api-key-${session.user.id}`);
+
 	return (
 		<main className="flex-grow flex flex-col pb-32 pt-10 space-y-10 items-center justify-center component-style-default">
 			<div className="flex flex-col justify-center items-center">
@@ -21,7 +25,7 @@ const Dashboard = async () => {
 				</h1>
 			</div>
 
-			<ApiKey />
+			<ApiKey apiKey={apiKey as string} />
 		</main>
 	);
 };
