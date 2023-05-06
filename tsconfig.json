@@ -24,6 +24,6 @@
       "@/ui/*": ["./src/components/ui/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/env.mjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/env.mjs", "src/styles/highlightTheme.js"],
   "exclude": ["node_modules"]
 }
