@@ -25,6 +25,21 @@ declare module "next-auth" {
 }
 
 export const authOptions: NextAuthOptions = {
+	callbacks: {
+		session: ({ session, user }) => ({
+			...session,
+			user: {
+				...session.user,
+				id: user.id,
+			},
+		}),
+
+		jwt: ({ token, user }) => {
+			user && (token.user = user);
+
+			return token;
+		},
+	},
 	adapter: UpstashRedisAdapter(redis),
 	pages: {
 		signIn: "/login",
