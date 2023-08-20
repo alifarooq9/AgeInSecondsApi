@@ -24,7 +24,8 @@ const Home: NextPage = () => {
 					Get Started
 				</Link>
 				<Link
-					href="/login"
+					href="https://github.com/alidotm/AgeInSecondsApi"
+					target="_blank"
 					className={cn(
 						buttonVariants({ size: "xl", variant: "border" })
 					)}
