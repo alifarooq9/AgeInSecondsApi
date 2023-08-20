@@ -25,33 +25,12 @@ declare module "next-auth" {
 }
 
 export const authOptions: NextAuthOptions = {
-	callbacks: {
-		session: ({ session, user }) => ({
-			...session,
-			user: {
-				...session.user,
-				id: user.id,
-			},
-		}),
-
-		jwt: ({ token, user }) => {
-			user && (token.user = user);
-
-			return token;
-		},
-	},
 	adapter: UpstashRedisAdapter(redis),
 	pages: {
 		signIn: "/login",
 		error: "/login",
 		verifyRequest: "/login",
 	},
-    session: {
-        strategy: 'jwt'
-    },
-    jwt: {
-        secret: env.NEXTAUTH_SECRET,
-    },
     secret: env.NEXTAUTH_SECRET,
 	providers: [
 		GoogleProvider({
